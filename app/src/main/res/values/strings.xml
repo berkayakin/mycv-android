@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">MyCV</string>
+    <string name="loading">Loading</string>
+    <string name="skillset">Skillset</string>
+    <string name="recent_personal_projects">Recent Personal Projects</string>
+    <string name="incomplete_personal_projects">Incomplete Personal Projects</string>
+    <string name="old_projects">Old Projects</string>
+    <string name="project_title">%1$s (%2$s)</string>
+    <string name="work">Work</string>
+    <string name="education">Education</string>
+    <string name="languages">Languages</string>
+    <string name="hobbies">Hobbies</string>
+    <string name="location_from_to">%1$s %2$s - %3$s</string>
+</resources>

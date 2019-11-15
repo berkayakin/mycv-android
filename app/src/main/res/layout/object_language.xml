@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable name="item" type="com.testchambr.mycv.models.Language"/>
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/padding_standard">
+
+        <TextView
+            android:id="@+id/objectLanguage_titleTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{item.title}"
+            android:textColor="@color/textColorPrimary"
+            android:textSize="@dimen/font_size_medium"
+            android:lineSpacingExtra="@dimen/text_view_line_spacing_extra"/>
+
+        <TextView
+            android:id="@+id/objectLanguage_levelTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{item.level}"
+            android:layout_below="@id/objectLanguage_titleTextView"
+            android:layout_marginTop="@dimen/margin_half"
+            android:textSize="@dimen/font_size_small"
+            android:lineSpacingExtra="@dimen/text_view_line_spacing_extra"/>
+
+    </RelativeLayout>
+
+</layout>

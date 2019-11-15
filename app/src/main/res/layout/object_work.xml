@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable name="item" type="com.testchambr.mycv.models.Work"/>
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/padding_standard"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+        <RelativeLayout
+            android:id="@+id/objectWork_informationContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/objectWork_logoImageView"
+                android:layout_width="@dimen/work_logo_size"
+                android:layout_height="@dimen/work_logo_size"
+                android:layout_marginEnd="@dimen/margin_standard"
+                app:customSrc="@{item.logoURL}"/>
+
+            <TextView
+                android:id="@+id/objectWork_companyTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{item.company}"
+                android:textColor="@color/textColorPrimary"
+                android:textSize="@dimen/font_size_medium"
+                android:lineSpacingExtra="@dimen/text_view_line_spacing_extra"
+                android:layout_toEndOf="@id/objectWork_logoImageView"/>
+
+            <TextView
+                android:id="@+id/objectWork_positionTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{item.position}"
+                android:textColor="@color/textColorPrimary"
+                android:layout_below="@id/objectWork_companyTextView"
+                android:layout_marginTop="@dimen/margin_half"
+                android:textSize="@dimen/font_size_small"
+                android:lineSpacingExtra="@dimen/text_view_line_spacing_extra"
+                android:layout_toEndOf="@id/objectWork_logoImageView"/>
+
+            <TextView
+                android:id="@+id/objectWork_locationFromToTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{@string/location_from_to(item.location, item.from, item.to)}"
+                android:layout_below="@id/objectWork_positionTextView"
+                android:layout_marginTop="@dimen/margin_half"
+                android:textSize="@dimen/font_size_small"
+                android:lineSpacingExtra="@dimen/text_view_line_spacing_extra"
+                android:layout_toEndOf="@id/objectWork_logoImageView"/>
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/objectWork_descriptionTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{item.description}"
+            android:layout_below="@id/objectWork_informationContainer"
+            android:layout_marginTop="@dimen/margin_standard"
+            android:textSize="@dimen/font_size_small"
+            android:textColor="@color/textColorPrimary"
+            android:lineSpacingExtra="@dimen/text_view_line_spacing_extra"
+            app:visibleGone="@{item.description != null}"/>
+
+    </RelativeLayout>
+
+</layout>

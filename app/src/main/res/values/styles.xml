@@ -1,0 +1,71 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="android:windowActionBarOverlay">true</item>
+
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:colorBackground">@color/backgroundColor</item>
+        <item name="fontPath">fonts/circular.otf</item>
+    </style>
+
+    <style name="TextAppearance.FontPath" parent="android:TextAppearance">
+        <!-- Custom Attr-->
+        <item name="fontPath">fonts/circular.otf</item>
+    </style>
+
+    <style name="Title" parent="Widget.AppCompat.TextView">
+        <item name="android:singleLine">true</item>
+        <item name="android:ellipsize">marquee</item>
+        <item name="android:layout_marginTop">@dimen/margin_standard</item>
+        <item name="android:layout_marginBottom">@dimen/margin_half</item>
+        <item name="android:layout_marginLeft">@dimen/margin_standard</item>
+        <item name="android:layout_marginRight">@dimen/margin_standard</item>
+    </style>
+
+    <style name="Title.Small" parent="Title">
+        <item name="android:textSize">17sp</item>
+    </style>
+
+    <style name="Title.Medium" parent="Title">
+        <item name="android:textSize">23sp</item>
+    </style>
+
+    <style name="Title.Large" parent="Title">
+        <item name="android:textSize">29sp</item>
+    </style>
+
+    <style name="Title.ExtraLarge" parent="Title">
+        <item name="android:textSize">35sp</item>
+    </style>
+
+    <style name="ItemHeader">
+        <item name="android:paddingTop">@dimen/padding_quarter</item>
+        <item name="android:paddingBottom">@dimen/padding_quarter</item>
+        <item name="android:foreground">?attr/selectableItemBackground</item>
+        <item name="android:background">@color/itemHeaderBackgroundColor</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+    </style>
+
+    <style name="ItemHeaderTitle" parent="Widget.AppCompat.TextView">
+        <item name="android:singleLine">true</item>
+        <item name="android:ellipsize">marquee</item>
+        <item name="android:layout_marginTop">@dimen/margin_half</item>
+        <item name="android:layout_marginBottom">@dimen/margin_half</item>
+        <item name="android:layout_marginLeft">@dimen/margin_standard</item>
+        <item name="android:layout_marginRight">@dimen/margin_standard</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:layout_alignParentStart">true</item>
+    </style>
+
+    <style name="IconItemHeader">
+        <item name="android:src">@drawable/ic_expand</item>
+        <item name="android:layout_marginEnd">@dimen/margin_standard</item>
+        <item name="android:layout_centerVertical">true</item>
+    </style>
+
+</resources>

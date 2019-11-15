@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable name="item" type="String"/>
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/padding_standard">
+
+        <TextView
+            android:id="@+id/objectHobby_titleTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{item}"
+            android:textColor="@color/textColorPrimary"
+            android:textSize="@dimen/font_size_medium"
+            android:lineSpacingExtra="@dimen/text_view_line_spacing_extra"/>
+
+    </RelativeLayout>
+
+</layout>

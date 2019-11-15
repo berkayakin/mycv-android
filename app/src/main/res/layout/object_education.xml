@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable name="item" type="com.testchambr.mycv.models.Education"/>
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/padding_standard"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+        <RelativeLayout
+            android:id="@+id/objectEducation_informationContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/objectEducation_logoImageView"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginEnd="@dimen/margin_half"
+                android:visibility="gone"/>
+
+            <TextView
+                android:id="@+id/objectEducation_titleTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{item.title}"
+                android:textColor="@color/textColorPrimary"
+                android:textSize="@dimen/font_size_medium"
+                android:lineSpacingExtra="@dimen/text_view_line_spacing_extra"
+                android:layout_toEndOf="@id/objectEducation_logoImageView"/>
+
+            <TextView
+                android:id="@+id/objectEducation_locationFromToTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{@string/location_from_to(item.location, item.from, item.to)}"
+                android:layout_below="@id/objectEducation_titleTextView"
+                android:layout_marginTop="@dimen/margin_half"
+                android:textSize="@dimen/font_size_small"
+                android:lineSpacingExtra="@dimen/text_view_line_spacing_extra"/>
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/objectEducation_descriptionTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{item.description}"
+            android:layout_below="@id/objectEducation_informationContainer"
+            android:layout_marginTop="@dimen/margin_standard"
+            android:textSize="@dimen/font_size_small"
+            android:textColor="@color/textColorPrimary"
+            android:lineSpacingExtra="@dimen/text_view_line_spacing_extra"
+            app:visibleGone="@{item.description != null}"/>
+
+    </RelativeLayout>
+
+</layout>

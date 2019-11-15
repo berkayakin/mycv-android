@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable name="item" type="com.testchambr.mycv.models.Project"/>
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/padding_standard"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+        <RelativeLayout
+            android:id="@+id/objectProject_informationContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/objectProject_iconImageView"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_project"
+                android:layout_marginEnd="@dimen/margin_half"
+                android:visibility="gone"/>
+
+            <TextView
+                android:id="@+id/objectProject_titleTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{@string/project_title(item.title, item.category)}"
+                android:textColor="@color/textColorPrimary"
+                android:textSize="@dimen/font_size_medium"
+                android:lineSpacingExtra="@dimen/text_view_line_spacing_extra"
+                android:layout_toEndOf="@id/objectProject_iconImageView"/>
+
+            <TextView
+                android:id="@+id/objectProject_platformsTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{item.platforms.toString()}"
+                android:layout_below="@id/objectProject_titleTextView"
+                android:layout_marginTop="@dimen/margin_half"
+                android:textSize="@dimen/font_size_small"
+                android:lineSpacingExtra="@dimen/text_view_line_spacing_extra"/>
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/objectProject_detailsTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{item.details}"
+            android:layout_below="@id/objectProject_informationContainer"
+            android:layout_marginTop="@dimen/margin_standard"
+            android:textSize="@dimen/font_size_small"
+            android:textColor="@color/textColorPrimary"
+            android:lineSpacingExtra="@dimen/text_view_line_spacing_extra"/>
+
+        <TextView
+            android:id="@+id/objectProject_URLTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{item.URL}"
+            android:layout_below="@id/objectProject_detailsTextView"
+            android:layout_marginTop="@dimen/margin_standard"
+            android:textSize="@dimen/font_size_small"
+            android:lineSpacingExtra="@dimen/text_view_line_spacing_extra"
+            android:autoLink="web"
+            app:visibleGone="@{item.URL != null}"/>
+
+        <TextView
+            android:id="@+id/objectProject_additionalInformationTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{item.additionalInformation}"
+            android:layout_below="@id/objectProject_URLTextView"
+            android:layout_marginTop="@dimen/margin_standard"
+            android:textSize="@dimen/font_size_small"
+            android:lineSpacingExtra="@dimen/text_view_line_spacing_extra"
+            app:visibleGone="@{item.additionalInformation != null}"/>
+
+    </RelativeLayout>
+
+</layout>

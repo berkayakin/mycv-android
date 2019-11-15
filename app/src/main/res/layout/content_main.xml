@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/profilePictureImageView"
+                android:layout_width="@dimen/profile_pic_size"
+                android:layout_height="@dimen/profile_pic_size"
+                android:layout_marginTop="@dimen/margin_standard"
+                android:layout_marginBottom="@dimen/margin_standard"
+                android:layout_marginStart="@dimen/margin_standard"/>
+
+            <TextView
+                android:id="@+id/nameTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorAccent"
+                style="@style/Title.ExtraLarge"
+                android:layout_toEndOf="@id/profilePictureImageView"/>
+
+            <TextView
+                android:id="@+id/titleTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/subtitle_font_size"
+                android:textColor="@color/textColorPrimary"
+                android:layout_below="@id/nameTextView"
+                android:layout_marginLeft="@dimen/margin_standard"
+                android:layout_marginRight="@dimen/margin_standard"
+                android:lineSpacingExtra="@dimen/text_view_line_spacing_extra"
+                android:layout_toEndOf="@id/profilePictureImageView"/>
+
+            <TextView
+                android:id="@+id/locationTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/subtitle_font_size"
+                android:layout_below="@id/titleTextView"
+                android:layout_marginTop="@dimen/margin_quarter"
+                android:layout_marginBottom="@dimen/margin_standard"
+                android:layout_marginLeft="@dimen/margin_standard"
+                android:layout_marginRight="@dimen/margin_standard"
+                android:layout_toEndOf="@id/profilePictureImageView"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/skillsetHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/ItemHeader">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/skillset"
+                android:textColor="@color/itemHeaderTextColor"
+                style="@style/ItemHeaderTitle"
+                android:layout_toStartOf="@id/icon1"/>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/icon1"
+                android:layout_width="@dimen/icon_item_header_size"
+                android:layout_height="@dimen/icon_item_header_size"
+                app:tint="@color/colorAccent"
+                style="@style/IconItemHeader"
+                android:layout_alignParentEnd="true"/>
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/skillsetContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/skillsetRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/personalProjectsHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/ItemHeader">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/recent_personal_projects"
+                android:textColor="@color/itemHeaderTextColor"
+                style="@style/ItemHeaderTitle"
+                android:layout_toStartOf="@id/icon2"/>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/icon2"
+                android:layout_width="@dimen/icon_item_header_size"
+                android:layout_height="@dimen/icon_item_header_size"
+                app:tint="@color/colorAccent"
+                style="@style/IconItemHeader"
+                android:layout_alignParentEnd="true"/>
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/personalProjectsContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/personalProjectsRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/incompletePersonalProjectsHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/ItemHeader">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/incomplete_personal_projects"
+                android:textColor="@color/itemHeaderTextColor"
+                style="@style/ItemHeaderTitle"
+                android:layout_toStartOf="@id/icon3"/>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/icon3"
+                android:layout_width="@dimen/icon_item_header_size"
+                android:layout_height="@dimen/icon_item_header_size"
+                app:tint="@color/colorAccent"
+                style="@style/IconItemHeader"
+                android:layout_alignParentEnd="true"/>
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/incompletePersonalProjectsContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/incompletePersonalProjectsRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/oldProjectsHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/ItemHeader">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/old_projects"
+                android:textColor="@color/itemHeaderTextColor"
+                style="@style/ItemHeaderTitle"
+                android:layout_toStartOf="@id/icon4"/>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/icon4"
+                android:layout_width="@dimen/icon_item_header_size"
+                android:layout_height="@dimen/icon_item_header_size"
+                app:tint="@color/colorAccent"
+                style="@style/IconItemHeader"
+                android:layout_alignParentEnd="true"/>
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/oldProjectsContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/oldProjectsRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/workHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/ItemHeader">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/work"
+                android:textColor="@color/itemHeaderTextColor"
+                style="@style/ItemHeaderTitle"
+                android:layout_toStartOf="@id/icon5"/>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/icon5"
+                android:layout_width="@dimen/icon_item_header_size"
+                android:layout_height="@dimen/icon_item_header_size"
+                app:tint="@color/colorAccent"
+                style="@style/IconItemHeader"
+                android:layout_alignParentEnd="true"/>
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/workContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/workRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/educationHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/ItemHeader">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/education"
+                android:textColor="@color/itemHeaderTextColor"
+                style="@style/ItemHeaderTitle"
+                android:layout_toStartOf="@id/icon6"/>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/icon6"
+                android:layout_width="@dimen/icon_item_header_size"
+                android:layout_height="@dimen/icon_item_header_size"
+                app:tint="@color/colorAccent"
+                style="@style/IconItemHeader"
+                android:layout_alignParentEnd="true"/>
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/educationContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/educationRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/languagesHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/ItemHeader">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/languages"
+                android:textColor="@color/itemHeaderTextColor"
+                style="@style/ItemHeaderTitle"
+                android:layout_toStartOf="@id/icon7"/>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/icon7"
+                android:layout_width="@dimen/icon_item_header_size"
+                android:layout_height="@dimen/icon_item_header_size"
+                app:tint="@color/colorAccent"
+                style="@style/IconItemHeader"
+                android:layout_alignParentEnd="true"/>
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/languagesContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/languagesRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/hobbiesHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/ItemHeader">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/hobbies"
+                android:textColor="@color/itemHeaderTextColor"
+                style="@style/ItemHeaderTitle"
+                android:layout_toStartOf="@id/icon8"/>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/icon8"
+                android:layout_width="@dimen/icon_item_header_size"
+                android:layout_height="@dimen/icon_item_header_size"
+                app:tint="@color/colorAccent"
+                style="@style/IconItemHeader"
+                android:layout_alignParentEnd="true"/>
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/hobbiesContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/hobbiesRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#675EB9</color>
+    <color name="colorPrimaryDark">#FFFFFF</color>
+    <color name="colorAccent">#675EB9</color>
+
+    <color name="white">#FFFFFF</color>
+
+    <color name="toolbarBackgroundColor">#FFFFFF</color>
+    <color name="backgroundColor">#FFFFFF</color>
+    <color name="itemHeaderBackgroundColor">#0A000000</color>
+    <color name="iconTint">#000000</color>
+
+    <color name="textColorPrimary">#000000</color>
+    <color name="inverseBackgroundColor">#000000</color>
+    <color name="inverseTextColor">#FFFFFF</color>
+    <color name="inverseIconTint">#FFFFFF</color>
+    <color name="toolbarIconTint">#000000</color>
+
+    <color name="itemHeaderTextColor">#2C2C2C</color>
+</resources>

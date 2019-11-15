@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="padding_double">32dp</dimen>
+    <dimen name="padding_standard">16dp</dimen>
+    <dimen name="padding_half">8dp</dimen>
+    <dimen name="padding_quarter">4dp</dimen>
+    <dimen name="margin_standard">16dp</dimen>
+    <dimen name="margin_half">8dp</dimen>
+    <dimen name="margin_double">32dp</dimen>
+    <dimen name="margin_quarter">4dp</dimen>
+
+    <dimen name="font_size_medium">17sp</dimen>
+    <dimen name="font_size_small">14sp</dimen>
+    <dimen name="font_size_large">20sp</dimen>
+    <dimen name="subtitle_font_size">14sp</dimen>
+
+    <dimen name="text_view_line_spacing_extra">5dp</dimen>
+    <dimen name="icon_item_header_size">22dp</dimen>
+    <dimen name="toolbar_icon_size">32dp</dimen>
+    <dimen name="toolbar_icon_padding">5dp</dimen>
+    <dimen name="profile_pic_size">110dp</dimen>
+    <dimen name="work_logo_size">40dp</dimen>
+</resources>
