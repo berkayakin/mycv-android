@@ -3,6 +3,7 @@ package com.testchambr.mycv.activities
 import android.content.Context
 import android.os.Bundle
 import android.view.View
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -151,6 +152,10 @@ class MainActivity : AppCompatActivity(), MainContract.View {
         }
     }
 
+    private fun setTotalItem(textView: TextView, total: Int) {
+        textView.text = resources.getString(R.string.total_item, total)
+    }
+
     private fun displayCV(cv: CV) {
 
         // Profile picture
@@ -164,6 +169,16 @@ class MainActivity : AppCompatActivity(), MainContract.View {
         nameTextView.text = cv.name
         titleTextView.text = cv.title
         locationTextView.text = cv.location
+
+        // Total items
+        setTotalItem(skillsetTotalTextView, cv.skillset.size)
+        setTotalItem(personalProjectsTotalTextView, cv.personalProjects.size)
+        setTotalItem(incompletePersonalProjectsTotalTextView, cv.incompletePersonalProjects.size)
+        setTotalItem(oldProjectsTotalTextView, cv.oldProjects.size)
+        setTotalItem(workTotalTextView, cv.work.size)
+        setTotalItem(educationTotalTextView, cv.education.size)
+        setTotalItem(languagesTotalTextView, cv.background?.languages?.size ?: 0)
+        setTotalItem(hobbiesTotalTextView, cv.background?.hobbies?.size ?: 0)
 
         // Skillset adapter
         LastAdapter(cv.skillset, BR.item)
