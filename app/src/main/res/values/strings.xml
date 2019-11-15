@@ -11,4 +11,6 @@
     <string name="languages">Languages</string>
     <string name="hobbies">Hobbies</string>
     <string name="location_from_to">%1$s %2$s - %3$s</string>
+    <string name="error">An error has occurred</string>
+    <string name="try_again">Failed, tap to try again</string>
 </resources>

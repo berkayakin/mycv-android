@@ -8,10 +8,21 @@
     android:focusable="true">
 
     <TextView
+        android:id="@+id/loadingTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/loading"
         android:textSize="@dimen/font_size_large"
         android:layout_centerInParent="true"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/tryAgainButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/try_again"
+        style="@style/CustomButton"
+        android:layout_below="@id/loadingTextView"
+        android:layout_centerInParent="true"
+        android:visibility="gone"/>
 
 </RelativeLayout>

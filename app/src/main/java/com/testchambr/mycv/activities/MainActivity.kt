@@ -13,6 +13,7 @@ import com.testchambr.mycv.BR
 import com.testchambr.mycv.R
 import com.testchambr.mycv.contracts.MainContract
 import com.testchambr.mycv.databinding.*
+import com.testchambr.mycv.extensions.showToast
 import com.testchambr.mycv.extensions.toggleVisibility
 import com.testchambr.mycv.helpers.Utils
 import com.testchambr.mycv.models.*
@@ -58,6 +59,10 @@ class MainActivity : AppCompatActivity(), MainContract.View {
         // Minimizing all expanded sections
         toolbarCollapseButton.setOnClickListener {
             setViewState()
+        }
+
+        tryAgainButton.setOnClickListener {
+            getCV()
         }
     }
 
@@ -106,6 +111,9 @@ class MainActivity : AppCompatActivity(), MainContract.View {
     }
 
     private fun showLoadingOverlay() {
+        loadingTextView.visibility = View.VISIBLE
+        tryAgainButton.visibility = View.GONE
+
         loadingOverlay.visibility = View.VISIBLE
     }
 
@@ -121,10 +129,24 @@ class MainActivity : AppCompatActivity(), MainContract.View {
 
     private fun getCV() {
         GlobalScope.launch {
-            cv = presenter.getCV()
+            var hasFailed = false
+            try {
+                cv = presenter.getCV()
+            } catch (e: Exception) {
+                hasFailed = true
+            }
             withContext(Dispatchers.Main) {
-                hideLoadingOverlay()
-                displayCV(cv!!)
+                if (hasFailed) {
+                    loadingTextView.visibility = View.GONE
+                    tryAgainButton.visibility = View.VISIBLE
+                    showToast(resources.getString(R.string.error))
+                } else {
+                    hideLoadingOverlay()
+
+                    cv?.let {
+                        displayCV(it)
+                    }
+                }
             }
         }
     }
