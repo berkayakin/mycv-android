@@ -8,7 +8,7 @@
 
     <color name="toolbarBackgroundColor">#FFFFFF</color>
     <color name="backgroundColor">#FFFFFF</color>
-    <color name="itemHeaderBackgroundColor">#0A000000</color>
+    <color name="sectionHeaderBackgroundColor">#0A000000</color>
     <color name="iconTint">#000000</color>
 
     <color name="textColorPrimary">#000000</color>

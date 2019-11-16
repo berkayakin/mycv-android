@@ -6,7 +6,7 @@
 
     <color name="toolbarBackgroundColor">#000000</color>
     <color name="backgroundColor">#000000</color>
-    <color name="itemHeaderBackgroundColor">#0FFFFFFF</color>
+    <color name="sectionHeaderBackgroundColor">#17FFFFFF</color>
     <color name="iconTint">#FFFFFF</color>
 
     <color name="textColorPrimary">#FFFFFF</color>
