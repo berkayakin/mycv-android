@@ -208,6 +208,25 @@ class MainActivity : AppCompatActivity(), MainContract.View {
         }
     }
 
+    override fun onBackPressed() {
+        var hasExpandedSection = false
+
+        // Checking if there is any expanded section
+        sections.forEach {
+            if (it.isExpanded()) {
+                hasExpandedSection = true
+                return@forEach
+            }
+        }
+
+        // Minimizing all sections conditionally
+        if (hasExpandedSection) {
+            minimizeSections()
+        } else {
+            super.onBackPressed()
+        }
+    }
+
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
 

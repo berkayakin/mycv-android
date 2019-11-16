@@ -74,4 +74,7 @@ class SectionView(context: Context, attrs: AttributeSet): LinearLayout(context, 
         sectionContent.visibility = View.GONE
     }
 
+    fun isExpanded(): Boolean {
+        return sectionContent.visibility == View.VISIBLE
+    }
 }
