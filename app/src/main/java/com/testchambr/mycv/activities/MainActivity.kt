@@ -70,6 +70,7 @@ class MainActivity : AppCompatActivity(), MainContract.View {
             minimizeSections()
         }
 
+        // Try again button action
         tryAgainButton.setOnClickListener {
             getCV()
         }
@@ -135,7 +136,6 @@ class MainActivity : AppCompatActivity(), MainContract.View {
     }
 
     private fun displayCV(cv: CV) {
-
         // Profile picture
         Glide.with(this)
             .load(R.drawable.profile)
