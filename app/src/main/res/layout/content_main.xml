@@ -57,373 +57,53 @@
 
         </RelativeLayout>
 
-        <RelativeLayout
-            android:id="@+id/skillsetHeader"
+        <com.testchambr.mycv.views.SectionView
+            android:id="@+id/sectionSkillset"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/ItemHeader">
+            app:text="@string/skillset"/>
 
-            <TextView
-                android:id="@+id/skillsetHeaderTitleTextView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/skillset"
-                android:textColor="@color/itemHeaderTextColor"
-                style="@style/ItemHeaderTitle"
-                android:layout_toStartOf="@id/icon1"/>
-
-            <TextView
-                android:id="@+id/skillsetTotalTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                style="@style/TotalItem"
-                android:layout_below="@id/skillsetHeaderTitleTextView"
-                android:layout_toStartOf="@id/icon1"/>
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/icon1"
-                android:layout_width="@dimen/icon_item_header_size"
-                android:layout_height="@dimen/icon_item_header_size"
-                app:tint="@color/colorAccent"
-                style="@style/IconItemHeader"
-                android:layout_alignParentEnd="true"/>
-
-        </RelativeLayout>
-
-        <LinearLayout
-            android:id="@+id/skillsetContainer"
+        <com.testchambr.mycv.views.SectionView
+            android:id="@+id/sectionPersonalProjects"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            app:text="@string/recent_personal_projects"/>
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/skillsetRecyclerView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-        </LinearLayout>
-
-        <RelativeLayout
-            android:id="@+id/personalProjectsHeader"
+        <com.testchambr.mycv.views.SectionView
+            android:id="@+id/sectionIncompletePersonalProjects"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/ItemHeader">
+            app:text="@string/incomplete_personal_projects"/>
 
-            <TextView
-                android:id="@+id/personalProjectsHeaderTitleTextView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/recent_personal_projects"
-                android:textColor="@color/itemHeaderTextColor"
-                style="@style/ItemHeaderTitle"
-                android:layout_toStartOf="@id/icon2"/>
-
-            <TextView
-                android:id="@+id/personalProjectsTotalTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                style="@style/TotalItem"
-                android:layout_below="@id/personalProjectsHeaderTitleTextView"
-                android:layout_toStartOf="@id/icon2"/>
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/icon2"
-                android:layout_width="@dimen/icon_item_header_size"
-                android:layout_height="@dimen/icon_item_header_size"
-                app:tint="@color/colorAccent"
-                style="@style/IconItemHeader"
-                android:layout_alignParentEnd="true"/>
-
-        </RelativeLayout>
-
-        <LinearLayout
-            android:id="@+id/personalProjectsContainer"
+        <com.testchambr.mycv.views.SectionView
+            android:id="@+id/sectionOldProjects"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            app:text="@string/old_projects"/>
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/personalProjectsRecyclerView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-        </LinearLayout>
-
-        <RelativeLayout
-            android:id="@+id/incompletePersonalProjectsHeader"
+        <com.testchambr.mycv.views.SectionView
+            android:id="@+id/sectionWork"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/ItemHeader">
+            app:text="@string/work"/>
 
-            <TextView
-                android:id="@+id/incompletePersonalProjectsHeaderTitleTextView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/incomplete_personal_projects"
-                android:textColor="@color/itemHeaderTextColor"
-                style="@style/ItemHeaderTitle"
-                android:layout_toStartOf="@id/icon3"/>
-
-            <TextView
-                android:id="@+id/incompletePersonalProjectsTotalTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                style="@style/TotalItem"
-                android:layout_below="@id/incompletePersonalProjectsHeaderTitleTextView"
-                android:layout_toStartOf="@id/icon3"/>
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/icon3"
-                android:layout_width="@dimen/icon_item_header_size"
-                android:layout_height="@dimen/icon_item_header_size"
-                app:tint="@color/colorAccent"
-                style="@style/IconItemHeader"
-                android:layout_alignParentEnd="true"/>
-
-        </RelativeLayout>
-
-        <LinearLayout
-            android:id="@+id/incompletePersonalProjectsContainer"
+        <com.testchambr.mycv.views.SectionView
+            android:id="@+id/sectionEducation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            app:text="@string/education"/>
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/incompletePersonalProjectsRecyclerView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-        </LinearLayout>
-
-        <RelativeLayout
-            android:id="@+id/oldProjectsHeader"
+        <com.testchambr.mycv.views.SectionView
+            android:id="@+id/sectionLanguages"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/ItemHeader">
+            app:text="@string/languages"/>
 
-            <TextView
-                android:id="@+id/oldProjectsHeaderTitleTextView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/old_projects"
-                android:textColor="@color/itemHeaderTextColor"
-                style="@style/ItemHeaderTitle"
-                android:layout_toStartOf="@id/icon4"/>
-
-            <TextView
-                android:id="@+id/oldProjectsTotalTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                style="@style/TotalItem"
-                android:layout_below="@id/oldProjectsHeaderTitleTextView"
-                android:layout_toStartOf="@id/icon4"/>
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/icon4"
-                android:layout_width="@dimen/icon_item_header_size"
-                android:layout_height="@dimen/icon_item_header_size"
-                app:tint="@color/colorAccent"
-                style="@style/IconItemHeader"
-                android:layout_alignParentEnd="true"/>
-
-        </RelativeLayout>
-
-        <LinearLayout
-            android:id="@+id/oldProjectsContainer"
+        <com.testchambr.mycv.views.SectionView
+            android:id="@+id/sectionHobbies"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/oldProjectsRecyclerView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-        </LinearLayout>
-
-        <RelativeLayout
-            android:id="@+id/workHeader"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@style/ItemHeader">
-
-            <TextView
-                android:id="@+id/workHeaderTitleTextView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/work"
-                android:textColor="@color/itemHeaderTextColor"
-                style="@style/ItemHeaderTitle"
-                android:layout_toStartOf="@id/icon5"/>
-
-            <TextView
-                android:id="@+id/workTotalTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                style="@style/TotalItem"
-                android:layout_below="@id/workHeaderTitleTextView"
-                android:layout_toStartOf="@id/icon5"/>
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/icon5"
-                android:layout_width="@dimen/icon_item_header_size"
-                android:layout_height="@dimen/icon_item_header_size"
-                app:tint="@color/colorAccent"
-                style="@style/IconItemHeader"
-                android:layout_alignParentEnd="true"/>
-
-        </RelativeLayout>
-
-        <LinearLayout
-            android:id="@+id/workContainer"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/workRecyclerView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-        </LinearLayout>
-
-        <RelativeLayout
-            android:id="@+id/educationHeader"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@style/ItemHeader">
-
-            <TextView
-                android:id="@+id/educationHeaderTitleTextView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/education"
-                android:textColor="@color/itemHeaderTextColor"
-                style="@style/ItemHeaderTitle"
-                android:layout_toStartOf="@id/icon6"/>
-
-            <TextView
-                android:id="@+id/educationTotalTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                style="@style/TotalItem"
-                android:layout_below="@id/educationHeaderTitleTextView"
-                android:layout_toStartOf="@id/icon6"/>
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/icon6"
-                android:layout_width="@dimen/icon_item_header_size"
-                android:layout_height="@dimen/icon_item_header_size"
-                app:tint="@color/colorAccent"
-                style="@style/IconItemHeader"
-                android:layout_alignParentEnd="true"/>
-
-        </RelativeLayout>
-
-        <LinearLayout
-            android:id="@+id/educationContainer"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/educationRecyclerView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-        </LinearLayout>
-
-        <RelativeLayout
-            android:id="@+id/languagesHeader"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@style/ItemHeader">
-
-            <TextView
-                android:id="@+id/languagesHeaderTitleTextView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/languages"
-                android:textColor="@color/itemHeaderTextColor"
-                style="@style/ItemHeaderTitle"
-                android:layout_toStartOf="@id/icon7"/>
-
-            <TextView
-                android:id="@+id/languagesTotalTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                style="@style/TotalItem"
-                android:layout_below="@id/languagesHeaderTitleTextView"
-                android:layout_toStartOf="@id/icon7"/>
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/icon7"
-                android:layout_width="@dimen/icon_item_header_size"
-                android:layout_height="@dimen/icon_item_header_size"
-                app:tint="@color/colorAccent"
-                style="@style/IconItemHeader"
-                android:layout_alignParentEnd="true"/>
-
-        </RelativeLayout>
-
-        <LinearLayout
-            android:id="@+id/languagesContainer"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/languagesRecyclerView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-        </LinearLayout>
-
-        <RelativeLayout
-            android:id="@+id/hobbiesHeader"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@style/ItemHeader">
-
-            <TextView
-                android:id="@+id/hobbiesHeaderTitleTextView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/hobbies"
-                android:textColor="@color/itemHeaderTextColor"
-                style="@style/ItemHeaderTitle"
-                android:layout_toStartOf="@id/icon8"/>
-
-            <TextView
-                android:id="@+id/hobbiesTotalTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                style="@style/TotalItem"
-                android:layout_below="@id/hobbiesHeaderTitleTextView"
-                android:layout_toStartOf="@id/icon8"/>
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/icon8"
-                android:layout_width="@dimen/icon_item_header_size"
-                android:layout_height="@dimen/icon_item_header_size"
-                app:tint="@color/colorAccent"
-                style="@style/IconItemHeader"
-                android:layout_alignParentEnd="true"/>
-
-        </RelativeLayout>
-
-        <LinearLayout
-            android:id="@+id/hobbiesContainer"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/hobbiesRecyclerView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-        </LinearLayout>
+            app:text="@string/hobbies"/>
 
     </LinearLayout>
 

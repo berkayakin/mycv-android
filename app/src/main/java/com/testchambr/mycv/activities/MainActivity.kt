@@ -3,10 +3,7 @@ package com.testchambr.mycv.activities
 import android.content.Context
 import android.os.Bundle
 import android.view.View
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.github.nitrico.lastadapter.LastAdapter
@@ -15,10 +12,10 @@ import com.testchambr.mycv.R
 import com.testchambr.mycv.contracts.MainContract
 import com.testchambr.mycv.databinding.*
 import com.testchambr.mycv.extensions.showToast
-import com.testchambr.mycv.extensions.toggleVisibility
 import com.testchambr.mycv.helpers.Utils
 import com.testchambr.mycv.models.*
 import com.testchambr.mycv.presenters.MainActivityPresenter
+import com.testchambr.mycv.views.SectionView
 import io.github.inflationx.viewpump.ViewPumpContextWrapper
 import kotlinx.android.synthetic.main.appbar_main.*
 import kotlinx.android.synthetic.main.content_main.*
@@ -32,7 +29,7 @@ class MainActivity : AppCompatActivity(), MainContract.View {
 
     private val presenter: MainContract.Presenter = MainActivityPresenter(this)
     private var cv: CV? = null
-    private var items = mutableListOf<ItemSet>()
+    private var sections = mutableListOf<SectionView>()
 
     override fun attachBaseContext(newBase: Context) {
         super.attachBaseContext(ViewPumpContextWrapper.wrap(newBase))
@@ -57,9 +54,12 @@ class MainActivity : AppCompatActivity(), MainContract.View {
         // Preparing views
         prepare()
 
+        // Collect all sections
+        populateSections()
+
         // Minimizing all expanded sections
         toolbarCollapseButton.setOnClickListener {
-            setViewState()
+            minimizeSections()
         }
 
         tryAgainButton.setOnClickListener {
@@ -67,48 +67,22 @@ class MainActivity : AppCompatActivity(), MainContract.View {
         }
     }
 
-    private fun prepare() {
-        // To not repeat same codes for each section
-        populateItems()
-
-        // Setting up visibility property of views
-        setupItems()
-
-        // Displaying loading screen
-        showLoadingOverlay()
-
-        // Hiding all sections
-        setViewState()
-    }
-
-    private fun populateItems() {
-        items = mutableListOf(
-            ItemSet(skillsetHeader, skillsetContainer, skillsetRecyclerView),
-            ItemSet(personalProjectsHeader, personalProjectsContainer, personalProjectsRecyclerView),
-            ItemSet(incompletePersonalProjectsHeader, incompletePersonalProjectsContainer, incompletePersonalProjectsRecyclerView),
-            ItemSet(oldProjectsHeader, oldProjectsContainer, oldProjectsRecyclerView),
-            ItemSet(workHeader, workContainer, workRecyclerView),
-            ItemSet(educationHeader, educationContainer, educationRecyclerView),
-            ItemSet(languagesHeader, languagesContainer, languagesRecyclerView),
-            ItemSet(hobbiesHeader, hobbiesContainer, hobbiesRecyclerView)
+    private fun populateSections() {
+        sections = mutableListOf(
+            sectionSkillset,
+            sectionPersonalProjects,
+            sectionIncompletePersonalProjects,
+            sectionOldProjects,
+            sectionWork,
+            sectionEducation,
+            sectionLanguages,
+            sectionHobbies
         )
     }
 
-    private fun setupItems() {
-        items.forEach {
-            val itemSet = it
-            itemSet.header.setOnClickListener {
-                itemSet.container.toggleVisibility()
-            }
-
-            setupRecyclerView(itemSet.recyclerView)
-        }
-    }
-
-    private fun setupRecyclerView(recyclerView: RecyclerView) {
-        recyclerView.setHasFixedSize(false)
-        recyclerView.isNestedScrollingEnabled = false
-        recyclerView.layoutManager = LinearLayoutManager(this)
+    private fun prepare() {
+        // Displaying loading screen
+        showLoadingOverlay()
     }
 
     private fun showLoadingOverlay() {
@@ -122,9 +96,9 @@ class MainActivity : AppCompatActivity(), MainContract.View {
         loadingOverlay.visibility = View.GONE
     }
 
-    private fun setViewState() {
-        items.forEach {
-            it.container.visibility = View.GONE
+    private fun minimizeSections() {
+        sections.forEach {
+            it.minimize()
         }
     }
 
@@ -152,10 +126,6 @@ class MainActivity : AppCompatActivity(), MainContract.View {
         }
     }
 
-    private fun setTotalItem(textView: TextView, total: Int) {
-        textView.text = resources.getString(R.string.total_item, total)
-    }
-
     private fun displayCV(cv: CV) {
 
         // Profile picture
@@ -171,62 +141,62 @@ class MainActivity : AppCompatActivity(), MainContract.View {
         locationTextView.text = cv.location
 
         // Total items
-        setTotalItem(skillsetTotalTextView, cv.skillset.size)
-        setTotalItem(personalProjectsTotalTextView, cv.personalProjects.size)
-        setTotalItem(incompletePersonalProjectsTotalTextView, cv.incompletePersonalProjects.size)
-        setTotalItem(oldProjectsTotalTextView, cv.oldProjects.size)
-        setTotalItem(workTotalTextView, cv.work.size)
-        setTotalItem(educationTotalTextView, cv.education.size)
-        setTotalItem(languagesTotalTextView, cv.background?.languages?.size ?: 0)
-        setTotalItem(hobbiesTotalTextView, cv.background?.hobbies?.size ?: 0)
+        sectionSkillset.setTotalItem(cv.skillset.size)
+        sectionPersonalProjects.setTotalItem(cv.personalProjects.size)
+        sectionIncompletePersonalProjects.setTotalItem(cv.incompletePersonalProjects.size)
+        sectionOldProjects.setTotalItem(cv.oldProjects.size)
+        sectionWork.setTotalItem(cv.work.size)
+        sectionEducation.setTotalItem(cv.education.size)
+        sectionLanguages.setTotalItem(cv.background?.languages?.size ?: 0)
+        sectionHobbies.setTotalItem(cv.background?.hobbies?.size ?: 0)
 
         // Skillset adapter
         LastAdapter(cv.skillset, BR.item)
             .map<Skill, ObjectSkillBinding>(R.layout.object_skill)
-            .into(skillsetRecyclerView)
+            .into(sectionSkillset.sectionRecyclerView)
 
         // Personal projects adapter
         LastAdapter(cv.personalProjects, BR.item)
             .map<Project, ObjectSkillBinding>(R.layout.object_project)
-            .into(personalProjectsRecyclerView)
+            .into(sectionPersonalProjects.sectionRecyclerView)
 
         // Incomplete personal projects adapter
         LastAdapter(cv.incompletePersonalProjects, BR.item)
             .map<Project, ObjectSkillBinding>(R.layout.object_project)
-            .into(incompletePersonalProjectsRecyclerView)
+            .into(sectionIncompletePersonalProjects.sectionRecyclerView)
 
         // Old projects adapter
         LastAdapter(cv.oldProjects, BR.item)
             .map<Project, ObjectSkillBinding>(R.layout.object_project)
-            .into(oldProjectsRecyclerView)
+            .into(sectionOldProjects.sectionRecyclerView)
 
         // Work adapter
         LastAdapter(cv.work, BR.item)
             .map<Work, ObjectWorkBinding>(R.layout.object_work)
-            .into(workRecyclerView)
+            .into(sectionWork.sectionRecyclerView)
 
         // Education adapter
         LastAdapter(cv.education, BR.item)
             .map<Education, ObjectEducationBinding>(R.layout.object_education)
-            .into(educationRecyclerView)
+            .into(sectionEducation.sectionRecyclerView)
 
         if (cv.background != null) {
             // Languages adapter
             LastAdapter(cv.background!!.languages, BR.item)
                 .map<Language, ObjectLanguageBinding>(R.layout.object_language)
-                .into(languagesRecyclerView)
+                .into(sectionLanguages.sectionRecyclerView)
 
             // Hobbies adapter
             LastAdapter(cv.background!!.hobbies, BR.item)
                 .map<String, ObjectHobbyBinding>(R.layout.object_hobby)
-                .into(hobbiesRecyclerView)
+                .into(sectionHobbies.sectionRecyclerView)
 
-            languagesHeader.visibility = View.VISIBLE
-            hobbiesHeader.visibility = View.VISIBLE
+            sectionLanguages.visibility = View.VISIBLE
+            sectionHobbies.visibility = View.VISIBLE
         } else {
             // Hiding these sections if background data is null
-            languagesHeader.visibility = View.GONE
-            hobbiesHeader.visibility = View.GONE
+            sectionLanguages.visibility = View.GONE
+            sectionHobbies.visibility = View.GONE
         }
     }
 

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/sectionHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/ItemHeader">
+
+        <TextView
+            android:id="@+id/sectionHeaderTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/itemHeaderTextColor"
+            style="@style/ItemHeaderTitle"
+            android:layout_toStartOf="@id/iconExpand"/>
+
+        <TextView
+            android:id="@+id/sectionTotalTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/TotalItem"
+            android:layout_below="@id/sectionHeaderTextView"
+            android:layout_toStartOf="@id/iconExpand"/>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iconExpand"
+            android:layout_width="@dimen/icon_item_header_size"
+            android:layout_height="@dimen/icon_item_header_size"
+            app:tint="@color/colorAccent"
+            style="@style/IconItemHeader"
+            android:layout_alignParentEnd="true"/>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/sectionContent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/sectionRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+</LinearLayout>
