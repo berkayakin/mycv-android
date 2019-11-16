@@ -21,6 +21,11 @@ import com.testchambr.mycv.extensions.toggleVisibility
 
 class SectionView(context: Context, attrs: AttributeSet): LinearLayout(context, attrs) {
 
+    companion object {
+        private const val ICON_EXPANDED_ALPHA = 0.5f
+        private const val ICON_MINIMIZED_ALPHA = 0.5f
+    }
+
     var sectionHeader: View
     var sectionHeaderTextView: TextView
     var sectionTotalTextView: TextView
@@ -64,17 +69,28 @@ class SectionView(context: Context, attrs: AttributeSet): LinearLayout(context, 
 
     fun toggle() {
         sectionContent.toggleVisibility()
+        setIcon()
     }
 
     fun expand() {
         sectionContent.visibility = View.VISIBLE
+        setIcon()
     }
 
     fun minimize() {
         sectionContent.visibility = View.GONE
+        setIcon()
     }
 
     fun isExpanded(): Boolean {
         return sectionContent.visibility == View.VISIBLE
+    }
+
+    private fun setIcon() {
+        if (isExpanded()) {
+            iconExpand.alpha = ICON_EXPANDED_ALPHA
+        } else {
+            iconExpand.alpha = ICON_MINIMIZED_ALPHA
+        }
     }
 }
