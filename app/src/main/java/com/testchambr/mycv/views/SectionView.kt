@@ -38,6 +38,7 @@ class SectionView(context: Context, attrs: AttributeSet): LinearLayout(context, 
 
         val attributes = context.obtainStyledAttributes(attrs, R.styleable.SectionView)
 
+        // Finding child views
         sectionHeader = findViewById(R.id.sectionHeader)
         sectionHeaderTextView = findViewById(R.id.sectionHeaderTextView)
         sectionTotalTextView = findViewById(R.id.sectionTotalTextView)
@@ -45,15 +46,20 @@ class SectionView(context: Context, attrs: AttributeSet): LinearLayout(context, 
         sectionContent = findViewById(R.id.sectionContent)
         sectionRecyclerView = findViewById(R.id.sectionRecyclerView)
 
+        // Expanding content when section header is clicked
         sectionHeader.setOnClickListener {
             toggle()
         }
+
+        // Section title with the "text" attribute
         sectionHeaderTextView.text = attributes.getString(R.styleable.SectionView_text)
 
+        // Setting up recyclerview
         sectionRecyclerView.setHasFixedSize(false)
         sectionRecyclerView.isNestedScrollingEnabled = false
         sectionRecyclerView.layoutManager = LinearLayoutManager(context)
 
+        // Minimizing section by default
         minimize()
 
         attributes.recycle()
