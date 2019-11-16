@@ -47,7 +47,11 @@ class SectionView(context: Context, attrs: AttributeSet): LinearLayout(context, 
     }
 
     fun setTotalItem(total: Int) {
-        sectionTotalTextView.text = resources.getString(R.string.total_item, total)
+        sectionTotalTextView.text = if (total > 1) {
+             resources.getString(R.string.total_items, total)
+        } else {
+            resources.getString(R.string.total_item, total)
+        }
     }
 
     fun toggle() {

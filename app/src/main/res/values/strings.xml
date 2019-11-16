@@ -13,5 +13,6 @@
     <string name="location_from_to">%1$s %2$s - %3$s</string>
     <string name="error">An error has occurred</string>
     <string name="try_again">Failed, tap to try again</string>
-    <string name="total_item">%1$d items</string>
+    <string name="total_item">%1$d item</string>
+    <string name="total_items">%1$d items</string>
 </resources>
