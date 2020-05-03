@@ -11,6 +11,7 @@ package com.testchambr.mycv.activities
 import android.content.Context
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
@@ -106,18 +107,18 @@ class MainActivity : BaseActivity() {
     }
 
     private fun getCV() {
-
         val viewModel = ViewModelProvider(this@MainActivity).get(CVViewModel::class.java)
         viewModel.getCV()?.observe(this, Observer { cvData ->
-            cv = cvData
-            hideLoadingOverlay()
-            displayCV(cv)
+            if (cvData.error !== null) {
+                loadingTextView.visibility = View.GONE
+                tryAgainButton.visibility = View.VISIBLE
+                Toast.makeText(this, resources.getString(R.string.error), Toast.LENGTH_SHORT).show()
+            } else {
+                cv = cvData.data!!
+                hideLoadingOverlay()
+                displayCV(cv)
+            }
         })
-
-        // TODO: Handle error
-        //loadingTextView.visibility = View.GONE
-        //tryAgainButton.visibility = View.VISIBLE
-        //showToast(resources.getString(R.string.error))
     }
 
     private fun displayCV(cv: CV) {
