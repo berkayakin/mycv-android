@@ -2,7 +2,7 @@
  * *
  *  * Created by Berkay AKIN on 11/16/19 8:49 PM
  *  * Copyright (c) 2019 . All rights reserved.
- *  * Last modified 11/16/19 8:47 PM
+ *  * Last modified 05/03/20 2:01 AM
  *
  */
 
@@ -11,32 +11,26 @@ package com.testchambr.mycv.activities
 import android.content.Context
 import android.os.Bundle
 import android.view.View
-import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.github.nitrico.lastadapter.LastAdapter
 import com.testchambr.mycv.BR
 import com.testchambr.mycv.R
-import com.testchambr.mycv.contracts.MainContract
 import com.testchambr.mycv.databinding.*
-import com.testchambr.mycv.extensions.showToast
 import com.testchambr.mycv.helpers.Utils
 import com.testchambr.mycv.models.*
-import com.testchambr.mycv.presenters.MainActivityPresenter
+import com.testchambr.mycv.viewmodels.CVViewModel
 import com.testchambr.mycv.views.SectionView
 import io.github.inflationx.viewpump.ViewPumpContextWrapper
 import kotlinx.android.synthetic.main.appbar_main.*
 import kotlinx.android.synthetic.main.content_main.*
 import kotlinx.android.synthetic.main.loading_main.*
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
-class MainActivity : AppCompatActivity(), MainContract.View {
+class MainActivity : BaseActivity() {
 
-    private val presenter: MainContract.Presenter = MainActivityPresenter(this)
-    private var cv: CV? = null
+    private lateinit var cv: CV
     private var sections = mutableListOf<SectionView>()
 
     override fun attachBaseContext(newBase: Context) {
@@ -112,27 +106,18 @@ class MainActivity : AppCompatActivity(), MainContract.View {
     }
 
     private fun getCV() {
-        GlobalScope.launch {
-            var hasFailed = false
-            try {
-                cv = presenter.getCV()
-            } catch (e: Exception) {
-                hasFailed = true
-            }
-            withContext(Dispatchers.Main) {
-                if (hasFailed) {
-                    loadingTextView.visibility = View.GONE
-                    tryAgainButton.visibility = View.VISIBLE
-                    showToast(resources.getString(R.string.error))
-                } else {
-                    hideLoadingOverlay()
 
-                    cv?.let {
-                        displayCV(it)
-                    }
-                }
-            }
-        }
+        val viewModel = ViewModelProvider(this@MainActivity).get(CVViewModel::class.java)
+        viewModel.getCV()?.observe(this, Observer { cvData ->
+            cv = cvData
+            hideLoadingOverlay()
+            displayCV(cv)
+        })
+
+        // TODO: Handle error
+        //loadingTextView.visibility = View.GONE
+        //tryAgainButton.visibility = View.VISIBLE
+        //showToast(resources.getString(R.string.error))
     }
 
     private fun displayCV(cv: CV) {
@@ -230,22 +215,20 @@ class MainActivity : AppCompatActivity(), MainContract.View {
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
 
-        cv?.let {
-            outState.putSerializable("cv", it)
-        }
+        outState.putSerializable("cv", cv)
     }
 
-    override fun onRestoreInstanceState(savedInstanceState: Bundle?) {
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
         super.onRestoreInstanceState(savedInstanceState)
 
         prepare()
 
         // If CV is loaded successfully once and saved into a bundle, loading from it
-        if (savedInstanceState?.containsKey("cv") == true) {
+        if (savedInstanceState.containsKey("cv")) {
             cv = savedInstanceState.getSerializable("cv") as CV
 
             hideLoadingOverlay()
-            displayCV(cv!!)
+            displayCV(cv)
         } else {
             // Make a request to get CV one more time
             getCV()
